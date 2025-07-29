@@ -81,14 +81,14 @@ const CardsComponent = ({ onBack }: CardsComponentProps) => {
   const usagePercentage = (creditCard.used / creditCard.limit) * 100;
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-primary p-6 text-white">
+    <div className="min-h-screen bg-background font-inter">
+      {/* Header estilo Inter */}
+      <div className="bg-gradient-primary px-6 pt-12 pb-8 text-white">
         <div className="flex items-center gap-4 mb-6">
-          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/20">
+          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/10 rounded-full">
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-xl font-semibold">Cartões</h1>
+          <h1 className="text-xl font-bold">Cartões</h1>
         </div>
       </div>
 

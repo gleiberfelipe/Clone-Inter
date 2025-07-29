@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Avatar, Avatar as AvatarComponent, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import BottomNavigation from "./BottomNavigation";
+import interLogo from "@/assets/inter-logo.png";
 import { 
   Eye, 
   EyeOff, 
@@ -20,7 +22,8 @@ import {
   DollarSign,
   ArrowUpRight,
   ArrowDownLeft,
-  Plus
+  Plus,
+  User
 } from "lucide-react";
 
 interface InterAppProps {
@@ -31,6 +34,7 @@ interface InterAppProps {
 
 const InterApp = ({ onNavigateToPix, onNavigateToStatement, onNavigateToCards }: InterAppProps) => {
   const [showBalance, setShowBalance] = useState(true);
+  const [activeTab, setActiveTab] = useState("home");
 
   // Mock data - em produção seria da API
   const balance = 15847.32;
@@ -53,66 +57,82 @@ const InterApp = ({ onNavigateToPix, onNavigateToStatement, onNavigateToCards }:
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-primary p-6 text-white">
-        <div className="flex items-center justify-between mb-6">
+    <div className="min-h-screen bg-background font-inter">
+      {/* Header oficial do Inter */}
+      <div className="bg-gradient-primary px-6 pt-12 pb-8 text-white relative">
+        {/* Status bar spacing */}
+        
+        {/* Top Header */}
+        <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <AvatarComponent className="h-10 w-10">
-              <AvatarFallback className="bg-white/20 text-white font-semibold">
+            <img src={interLogo} alt="Inter" className="h-8 w-auto" />
+          </div>
+          <div className="flex items-center gap-3">
+            <Avatar className="h-10 w-10 border-2 border-white/20">
+              <AvatarFallback className="bg-white/10 text-white font-semibold backdrop-blur-sm">
                 MF
               </AvatarFallback>
-            </AvatarComponent>
-            <div>
-              <p className="text-sm opacity-90">Olá,</p>
-              <p className="font-semibold">Maria Fernanda</p>
+            </Avatar>
+            <div className="flex items-center gap-1">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 rounded-full">
+                <Bell className="h-5 w-5" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 rounded-full">
+                <Settings className="h-5 w-5" />
+              </Button>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-              <Bell className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-              <Settings className="h-5 w-5" />
-            </Button>
           </div>
         </div>
 
-        {/* Balance Card */}
-        <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm opacity-90">Saldo em conta</span>
+        {/* Greeting */}
+        <div className="mb-6">
+          <p className="text-sm opacity-75 font-normal">Olá,</p>
+          <p className="text-2xl font-bold">Maria Fernanda</p>
+        </div>
+
+        {/* Saldo Card - Estilo Inter */}
+        <Card className="bg-white/5 backdrop-blur-md border-white/10 text-white shadow-lg">
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <Building className="h-5 w-5 opacity-75" />
+                <span className="text-sm opacity-75 font-medium">Conta corrente</span>
+              </div>
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 text-white hover:bg-white/20"
+                className="h-8 w-8 text-white hover:bg-white/10 rounded-full"
                 onClick={() => setShowBalance(!showBalance)}
               >
                 {showBalance ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </Button>
             </div>
-            <div className="text-2xl font-bold">
-              {showBalance ? `R$ ${balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
+            <div className="mb-2">
+              <div className="text-3xl font-bold tracking-tight">
+                {showBalance ? `R$ ${balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
+              </div>
+              <p className="text-sm opacity-75">Saldo disponível</p>
             </div>
           </div>
         </Card>
       </div>
 
-      {/* Quick Actions */}
-      <div className="px-6 -mt-4 mb-6">
-        <Card className="shadow-card">
-          <div className="p-4">
-            <div className="grid grid-cols-4 gap-4">
+      {/* Quick Actions - Estilo Inter */}
+      <div className="px-6 -mt-6 mb-8 relative z-10">
+        <Card className="shadow-elevation bg-card">
+          <div className="p-6">
+            <div className="grid grid-cols-4 gap-6">
               {quickActions.map((action, index) => (
                 <Button
                   key={index}
                   variant="ghost"
-                  className="flex flex-col gap-2 h-auto p-3 hover:bg-accent"
+                  className="flex flex-col gap-3 h-auto p-4 hover:bg-accent/50 rounded-xl transition-all duration-200"
                   onClick={action.onClick}
                 >
-                  <action.icon className="h-6 w-6 text-primary" />
-                  <span className="text-xs text-foreground">{action.label}</span>
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <action.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <span className="text-xs font-medium text-foreground">{action.label}</span>
                 </Button>
               ))}
             </div>
@@ -120,90 +140,99 @@ const InterApp = ({ onNavigateToPix, onNavigateToStatement, onNavigateToCards }:
         </Card>
       </div>
 
-      {/* Main Content */}
+      {/* Cards Section */}
       <div className="px-6 space-y-6">
-        {/* Cards Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="shadow-card">
-            <div className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-success/10 rounded-lg">
-                  <PiggyBank className="h-5 w-5 text-success" />
+        {/* Cards Overview - Estilo Inter */}
+        <div className="grid grid-cols-1 gap-4">
+          <Card className="shadow-card hover:shadow-elevation transition-all duration-300">
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-success/10 rounded-xl">
+                    <PiggyBank className="h-6 w-6 text-success" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium">Poupança Inter</p>
+                    <p className="text-xl font-bold">
+                      {showBalance ? `R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
+                    </p>
+                    <p className="text-xs text-success font-medium">+0,5% ao mês</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Poupança</p>
-                  <p className="text-lg font-semibold">
-                    {showBalance ? `R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
-                  </p>
-                </div>
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground" />
               </div>
             </div>
           </Card>
 
-          <Card className="shadow-card">
-            <div className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <CreditCard className="h-5 w-5 text-primary" />
+          <Card className="shadow-card hover:shadow-elevation transition-all duration-300">
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <CreditCard className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium">Cartão de Crédito</p>
+                    <p className="text-xl font-bold">
+                      {showBalance ? `R$ ${(creditLimit - creditUsed).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Limite de R$ {creditLimit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Cartão de Crédito</p>
-                  <p className="text-lg font-semibold">
-                    {showBalance ? `R$ ${(creditLimit - creditUsed).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : "R$ •••••"}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    Limite: R$ {creditLimit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                  </p>
-                </div>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={onNavigateToCards}
+                  className="text-primary hover:bg-primary/10"
+                >
+                  Ver cartão
+                </Button>
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={onNavigateToCards}
-                className="mt-2 text-xs"
-              >
-                Ver cartões
-              </Button>
             </div>
           </Card>
 
-          <Card className="shadow-card">
-            <div className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-warning/10 rounded-lg">
-                  <TrendingUp className="h-5 w-5 text-warning" />
+          <Card className="shadow-card hover:shadow-elevation transition-all duration-300">
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-warning/10 rounded-xl">
+                    <TrendingUp className="h-6 w-6 text-warning" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium">Investimentos</p>
+                    <p className="text-xl font-bold">
+                      {showBalance ? "R$ 12.450,32" : "R$ •••••"}
+                    </p>
+                    <p className="text-xs text-success font-medium">+2,5% este mês</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Investimentos</p>
-                  <p className="text-lg font-semibold">
-                    {showBalance ? "R$ 12.450,32" : "R$ •••••"}
-                  </p>
-                  <p className="text-xs text-success">+2,5% este mês</p>
-                </div>
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground" />
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Recent Transactions */}
+        {/* Recent Transactions - Estilo Inter */}
         <Card className="shadow-card">
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Últimas transações</h3>
-              <Button variant="ghost" size="sm" onClick={onNavigateToStatement}>
-                Ver todas
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-bold">Atividade</h3>
+              <Button variant="ghost" size="sm" onClick={onNavigateToStatement} className="text-primary hover:bg-primary/10">
+                Ver extrato
               </Button>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {recentTransactions.map((transaction) => (
-                <div key={transaction.id} className="flex items-center justify-between p-3 hover:bg-accent rounded-lg transition-colors">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full ${
+                <div key={transaction.id} className="flex items-center justify-between py-3 hover:bg-accent/30 rounded-lg px-3 -mx-3 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className={`p-2 rounded-xl ${
                       transaction.type === 'received' 
                         ? 'bg-success/10' 
                         : transaction.type === 'sent' 
                         ? 'bg-destructive/10' 
-                        : 'bg-muted'
+                        : 'bg-muted/50'
                     }`}>
                       {transaction.type === 'received' ? (
                         <ArrowDownLeft className={`h-4 w-4 text-success`} />
@@ -219,14 +248,14 @@ const InterApp = ({ onNavigateToPix, onNavigateToStatement, onNavigateToCards }:
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className={`font-semibold ${
+                    <p className={`font-bold text-sm ${
                       transaction.amount > 0 ? 'text-success' : 'text-foreground'
                     }`}>
                       {transaction.amount > 0 ? '+' : ''}
                       R$ {Math.abs(transaction.amount).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </p>
                     {transaction.highlight && (
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-xs mt-1">
                         Salário
                       </Badge>
                     )}
@@ -237,39 +266,62 @@ const InterApp = ({ onNavigateToPix, onNavigateToStatement, onNavigateToCards }:
           </div>
         </Card>
 
-        {/* PIX Section */}
+        {/* PIX Section - Estilo Inter */}
         <Card className="shadow-card">
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">PIX</h3>
-              <Button size="sm" className="bg-gradient-primary">
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-bold">PIX</h3>
+              <Button size="sm" className="bg-gradient-primary hover:shadow-button transition-all">
                 <Plus className="h-4 w-4 mr-2" />
                 Nova chave
               </Button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <Button variant="outline" className="flex flex-col gap-2 h-auto p-4">
-                <QrCode className="h-6 w-6 text-primary" />
-                <span className="text-xs">QR Code</span>
+            <div className="grid grid-cols-2 gap-4">
+              <Button 
+                variant="outline" 
+                className="flex flex-col gap-3 h-auto p-6 hover:bg-accent/30 border-2 hover:border-primary/20 transition-all"
+                onClick={onNavigateToPix}
+              >
+                <QrCode className="h-8 w-8 text-primary" />
+                <span className="text-sm font-medium">QR Code</span>
               </Button>
-              <Button variant="outline" className="flex flex-col gap-2 h-auto p-4">
-                <Smartphone className="h-6 w-6 text-primary" />
-                <span className="text-xs">PIX Copia e Cola</span>
+              <Button 
+                variant="outline" 
+                className="flex flex-col gap-3 h-auto p-6 hover:bg-accent/30 border-2 hover:border-primary/20 transition-all"
+              >
+                <Smartphone className="h-8 w-8 text-primary" />
+                <span className="text-sm font-medium">Copia e Cola</span>
               </Button>
-              <Button variant="outline" className="flex flex-col gap-2 h-auto p-4">
-                <DollarSign className="h-6 w-6 text-primary" />
-                <span className="text-xs">Cobrar</span>
+              <Button 
+                variant="outline" 
+                className="flex flex-col gap-3 h-auto p-6 hover:bg-accent/30 border-2 hover:border-primary/20 transition-all"
+              >
+                <DollarSign className="h-8 w-8 text-primary" />
+                <span className="text-sm font-medium">Cobrar</span>
               </Button>
-              <Button variant="outline" className="flex flex-col gap-2 h-auto p-4">
-                <Building className="h-6 w-6 text-primary" />
-                <span className="text-xs">Minhas chaves</span>
+              <Button 
+                variant="outline" 
+                className="flex flex-col gap-3 h-auto p-6 hover:bg-accent/30 border-2 hover:border-primary/20 transition-all"
+              >
+                <User className="h-8 w-8 text-primary" />
+                <span className="text-sm font-medium">Contatos</span>
               </Button>
             </div>
           </div>
         </Card>
       </div>
 
-      <div className="h-24"></div> {/* Bottom spacing */}
+      {/* Bottom Navigation */}
+      <BottomNavigation 
+        activeTab={activeTab} 
+        onTabChange={(tab) => {
+          setActiveTab(tab);
+          if (tab === "pix") onNavigateToPix?.();
+          if (tab === "cards") onNavigateToCards?.();
+        }} 
+      />
+
+      <div className="h-20"></div> {/* Bottom spacing for navigation */}
     </div>
   );
 };

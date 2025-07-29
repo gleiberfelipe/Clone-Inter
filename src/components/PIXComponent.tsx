@@ -87,30 +87,30 @@ const PIXComponent = ({ onBack }: PIXComponentProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-primary p-6 text-white">
+    <div className="min-h-screen bg-background font-inter">
+      {/* Header estilo Inter */}
+      <div className="bg-gradient-primary px-6 pt-12 pb-8 text-white">
         <div className="flex items-center gap-4 mb-4">
-          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/20">
+          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/10 rounded-full">
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-xl font-semibold">PIX</h1>
+          <h1 className="text-xl font-bold">PIX</h1>
         </div>
       </div>
 
       <div className="p-6 space-y-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="send">Enviar</TabsTrigger>
-            <TabsTrigger value="receive">Receber</TabsTrigger>
-            <TabsTrigger value="keys">Minhas chaves</TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-3 bg-muted/50">
+            <TabsTrigger value="send" className="font-medium">Enviar</TabsTrigger>
+            <TabsTrigger value="receive" className="font-medium">Receber</TabsTrigger>
+            <TabsTrigger value="keys" className="font-medium">Minhas chaves</TabsTrigger>
           </TabsList>
 
           {/* Enviar PIX */}
           <TabsContent value="send" className="space-y-6">
-            <Card className="shadow-card">
+            <Card className="shadow-card border-0">
               <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Enviar PIX</h3>
+                <h3 className="text-lg font-bold mb-6">Enviar PIX</h3>
                 
                 <div className="space-y-4">
                   <div>

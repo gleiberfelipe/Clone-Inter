@@ -2,59 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Inter Bank Design System - Modern banking interface */
+/* Banco Inter - Identidade Visual Oficial */
 
 @layer base {
   :root {
-    /* Inter Bank Brand Colors */
-    --background: 220 20% 96%;
-    --foreground: 220 15% 15%;
+    /* Cores oficiais do Banco Inter */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 0 0% 10%;
 
-    /* Inter Orange Primary */
-    --primary: 25 100% 55%;
+    /* Laranja Inter - Cor principal da marca */
+    --primary: 15 100% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 25 100% 65%;
-    --primary-dark: 25 90% 45%;
+    --primary-light: 15 100% 65%;
+    --primary-dark: 15 90% 45%;
 
-    /* Banking Grays */
-    --secondary: 220 15% 92%;
-    --secondary-foreground: 220 15% 25%;
+    /* Cinza Inter */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 220 15% 90%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 220 15% 90%;
-    --accent-foreground: 220 15% 25%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 20%;
 
-    /* Status Colors */
-    --destructive: 0 75% 55%;
+    /* Cores de status */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --success: 142 76% 36%;
+    --success: 120 100% 25%;
     --success-foreground: 0 0% 100%;
     
-    --warning: 45 93% 47%;
-    --warning-foreground: 220 15% 15%;
+    --warning: 45 100% 50%;
+    --warning-foreground: 0 0% 10%;
 
-    --border: 220 15% 85%;
-    --input: 220 15% 90%;
-    --ring: 25 100% 55%;
+    --border: 0 0% 88%;
+    --input: 0 0% 94%;
+    --ring: 15 100% 55%;
 
-    /* Banking specific gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(25 100% 55%), hsl(25 100% 65%));
-    --gradient-dark: linear-gradient(135deg, hsl(220 15% 15%), hsl(220 15% 25%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 15% 98%));
+    /* Gradientes oficiais do Inter */
+    --gradient-primary: linear-gradient(135deg, hsl(15 100% 55%), hsl(25 100% 65%));
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 20%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
     
-    /* Shadows for depth */
-    --shadow-card: 0 4px 20px hsl(220 15% 15% / 0.08);
-    --shadow-button: 0 2px 8px hsl(25 100% 55% / 0.25);
-    --shadow-elevation: 0 8px 32px hsl(220 15% 15% / 0.12);
+    /* Sombras estilo Inter */
+    --shadow-card: 0 2px 16px hsla(0, 0%, 0%, 0.06);
+    --shadow-button: 0 4px 12px hsla(15, 100%, 55%, 0.2);
+    --shadow-elevation: 0 8px 24px hsla(0, 0%, 0%, 0.08);
 
     --radius: 0.5rem;
 
@@ -76,50 +76,50 @@
   }
 
   .dark {
-    /* Dark mode for Inter Bank */
-    --background: 220 15% 8%;
-    --foreground: 220 10% 95%;
+    /* Dark mode Inter */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 220 10% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 10% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 25 100% 55%;
+    --primary: 15 100% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 25 100% 65%;
-    --primary-dark: 25 90% 45%;
+    --primary-light: 15 100% 65%;
+    --primary-dark: 15 90% 45%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 220 10% 85%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 220 15% 16%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 220 15% 18%;
-    --accent-foreground: 220 10% 85%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 85%;
 
-    --destructive: 0 75% 55%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --success: 142 76% 36%;
+    --success: 120 100% 25%;
     --success-foreground: 0 0% 100%;
     
-    --warning: 45 93% 47%;
-    --warning-foreground: 220 15% 15%;
+    --warning: 45 100% 50%;
+    --warning-foreground: 0 0% 10%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 16%;
-    --ring: 25 100% 55%;
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 15 100% 55%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(25 100% 55%), hsl(25 100% 65%));
-    --gradient-dark: linear-gradient(135deg, hsl(220 15% 8%), hsl(220 15% 15%));
-    --gradient-card: linear-gradient(145deg, hsl(220 15% 12%), hsl(220 15% 15%));
+    --gradient-primary: linear-gradient(135deg, hsl(15 100% 55%), hsl(25 100% 65%));
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 10%), hsl(0 0% 12%));
     
-    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
-    --shadow-button: 0 2px 8px hsl(25 100% 55% / 0.3);
-    --shadow-elevation: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 2px 16px hsla(0, 0%, 0%, 0.3);
+    --shadow-button: 0 4px 12px hsla(15, 100%, 55%, 0.3);
+    --shadow-elevation: 0 8px 24px hsla(0, 0%, 0%, 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -137,6 +137,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
   }
 }

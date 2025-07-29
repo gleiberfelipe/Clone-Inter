@@ -168,14 +168,14 @@ const StatementComponent = ({ onBack }: StatementComponentProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-gradient-primary p-6 text-white">
+    <div className="min-h-screen bg-background font-inter">
+      {/* Header estilo Inter */}
+      <div className="bg-gradient-primary px-6 pt-12 pb-8 text-white">
         <div className="flex items-center gap-4 mb-4">
-          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/20">
+          <Button variant="ghost" size="icon" onClick={onBack} className="text-white hover:bg-white/10 rounded-full">
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-xl font-semibold">Extrato</h1>
+          <h1 className="text-xl font-bold">Extrato</h1>
         </div>
 
         {/* Summary Cards */}
