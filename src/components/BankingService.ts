@@ -28,7 +28,7 @@ class BankingService {
 
     try {
       // Em ambiente de desenvolvimento, simular autenticação
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         this.accessToken = 'mock_access_token_' + Date.now();
         this.tokenExpiry = Date.now() + 3600 * 1000; // 1 hora
         return this.accessToken;
@@ -64,7 +64,7 @@ class BankingService {
       const token = await this.authenticate();
       
       // Mock data para desenvolvimento
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return {
           saldo: 15847.32,
           saldoDisponivel: 15847.32
@@ -91,7 +91,7 @@ class BankingService {
       const token = await this.authenticate();
       
       // Mock data para desenvolvimento
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return [
           {
             dataHoraTransacao: new Date().toISOString(),
@@ -134,7 +134,7 @@ class BankingService {
       const token = await this.authenticate();
       
       // Mock response para desenvolvimento
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return {
           txid: 'mock_txid_' + Date.now(),
           emv: 'mock_emv_qr_code_string',
@@ -176,7 +176,7 @@ class BankingService {
     try {
       const token = await this.authenticate();
       
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return {
           txid: txid,
           status: 'CONCLUIDA',
@@ -205,7 +205,7 @@ class BankingService {
       const token = await this.authenticate();
       
       // Mock response para desenvolvimento
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return {
           endToEndId: 'E' + Date.now(),
           txid: 'pix_' + Date.now(),
@@ -242,7 +242,7 @@ class BankingService {
     try {
       const token = await this.authenticate();
       
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.MODE === 'development') {
         return {
           numeroContaCompleta: "00000000-0",
           nomeCorrentista: "Maria Fernanda Silva",
@@ -267,8 +267,8 @@ class BankingService {
 
 // Instância singleton do serviço bancário
 export const bankingService = new BankingService({
-  clientId: process.env.VITE_INTER_CLIENT_ID || 'mock_client_id',
-  clientSecret: process.env.VITE_INTER_CLIENT_SECRET || 'mock_client_secret'
+  clientId: import.meta.env.VITE_INTER_CLIENT_ID || 'mock_client_id',
+  clientSecret: import.meta.env.VITE_INTER_CLIENT_SECRET || 'mock_client_secret'
 });
 
 export default BankingService;
