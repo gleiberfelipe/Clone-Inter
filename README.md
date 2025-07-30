@@ -1,83 +1,73 @@
-🏦 Inter Bank - Clone React (Projeto de Estudo)
-Um projeto de estudo que simula a interface do Banco Inter, desenvolvido em React com TypeScript, com planos para integração com as APIs oficiais em modo sandbox.
+# 🏦 Inter Bank Clone - Projeto Educacional
 
-🎯 Objetivos do Projeto
-Objetivo Principal
-Criar uma aplicação frontend educacional que:
+Um clone da interface do Banco Inter desenvolvido em React + TypeScript para estudos de integração com APIs financeiras.
 
-Demonstre habilidades com React e TypeScript
+## 🎯 Objetivos Principais
 
-Explore a integração com APIs bancárias
+### **Aprendizado Técnico**
+- [x] Desenvolver interface fiel ao app original
+- [ ] Integrar com APIs reais do Inter (sandbox)
+- [ ] Implementar testes automatizados completos
 
-Implemente boas práticas de desenvolvimento
+### **Desafios Planejados**
+```bash
+1. Autenticação OAuth2
+2. Consumo de endpoints bancários
+3. Testes E2E com Cypress
 
-Status Atual
-✅ Interface visual completa (mock data)
-🔜 Integração com APIs reais do Inter
-🔜 Implementação de testes automatizados
+```
+🛠 Stack Tecnológica
+Tecnologia	Uso Principal	Status
+React 18	Framework base	✅ Implementado
+TypeScript	Tipagem estática	✅ Implementado
+Tailwind CSS	Estilização	✅ Implementado
+React Query	Gerenciamento de estado	⏳ Em progresso
+Jest	Testes unitários	⏳ Em progresso
 
-🛠 Tecnologias Utilizadas
-React 18 + TypeScript
+🔍 Funcionalidades
 
-Tailwind CSS para estilização
-
-Vite como build tool
-
-React Query para gerenciamento de estado
-
-Jest + Testing Library (em implementação)
-
-Cypress (em implementação)
-
-🔍 Funcionalidades Implementadas
-Interface Visual
+✅ Implementadas
 Dashboard principal
 
 Navegação entre seções
 
-Componentes de formulário
-
-Tela de transações PIX
+Componentes de formulário PIX
 
 Visualização de extrato
 
-Próximos Passos Técnicos
-Integração com API sandbox do Inter
-
-Implementação de autenticação OAuth2
-
-Conexão com endpoints reais:
-
-Saldo e extrato
-
-Operações PIX
-
-Gerenciamento de cartões
+🔜 Planejadas
+javascript
+// Próximas integrações
+const integrations = [
+  'API de Saldo',
+  'Endpoint PIX',
+  'Webhooks',
+  'Autenticação segura'
+];
 
 🚀 Como Executar
-````
+
+Clone o repositório:
+
+```
 bash
 git clone https://github.com/seu-usuario/inter-clone.git
-cd inter-clone
+```
+Instale as dependências:
+
+```
+bash
 npm install
+```
+Execute em desenvolvimento:
+
+```
+bash
 npm run dev
-````
+```
 
 📌 Notas Importantes
-Este é um projeto educacional, não afiliado ao Banco Inter
+"Este projeto é 100% educacional, não possuindo qualquer afiliação com o Banco Inter. O objetivo principal é o aprendizado técnico."
 
-Dados atualmente mockados (próxima fase: integração real)
-
-Documentação em constante evolução
-
-🌟 Por Que Este Projeto?
-Aprender integração com APIs financeiras
-
-Praticar padrões de código limpo
-
-Desenvolver habilidades em testes automatizados
-
-Entender o ecossistema de open banking
-
-Demo: Ver Projeto Online
-Roadmap: Veja as próximas etapas no Projects
+Demo Online: Acessar Projeto
+Roadmap: Ver Planejamento
